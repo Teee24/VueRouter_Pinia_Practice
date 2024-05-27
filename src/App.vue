@@ -15,6 +15,14 @@ import HelloWorld from './components/HelloWorld.vue'
       </nav>
     </div>
   </header>
+  <ul>
+    <li>
+      <router-link to="/users/eduardo/posts/1">/users/eduardo/posts/1</router-link>
+    </li>
+    <li>
+      <router-link to="/users/tee/posts/23">/users/tee/posts/23</router-link>
+    </li>
+  </ul>
   <main>
     <RouterView />
   </main>
