@@ -7,6 +7,19 @@ import AboutView from '@/views/AboutView.vue'
 // 路徑參數
 import UserPost from '@/views/UserPost.vue'
 
+import NotFound from '@/components/NotFound.vue'
+
+import Demo from '@/components/Demo.vue'
+import StartedView from '@/views/01_StartedView.vue'
+import DynamicRouteView from '@/views/02_DynamicRouteView.vue'
+import RoutesMatching from '@/views/03_RoutesMatching.vue'
+import UserGeneric from '@/components/UserGeneric.vue'
+import NestedRoutes from '@/views/04_NestedRoutes.vue'
+
+import UserProfile from '@/views/UserProfile.vue'
+import User from '@/views/User.vue'
+import UserHome from '@/views/UserHome.vue'
+
 // const router = createRouter({
 //   history: createWebHistory(import.meta.env.BASE_URL),
 //   routes: [
@@ -33,10 +46,11 @@ import UserPost from '@/views/UserPost.vue'
 
 // 定義路由，把URL 路徑對應到元件
 // 路由配置中每個路由對應的元件會被渲染到 <RouterView> 中，這樣就實現了根據URL路徑動態渲染不同的頁面內容
-const routes = [
-  { path: '/', component: HomeView },
-  { path: '/about', component: AboutView }
-]
+// 擷取取所有路由或404 Not found 路由
+// 将匹配所有内容并將其放在 `$route.params.pathMatch` 下
+// { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
+// 将匹配以 `/user-` 開頭的所有内容，并將其放在 `$route.params.afterUser` 下
+// { path: '/user-:afterUser(.*)', component: UserGeneric }
 // 建立路由器實例 -> 呼叫 createRouter()
 const router = createRouter({
   // 控制了路由和URL 路徑是如何雙向映射
@@ -45,6 +59,41 @@ const router = createRouter({
   // history: createMemoryHistory(),
 
   history: createWebHistory(),
-  routes: [{ path: '/users/:username/posts/:postId', component: UserPost }]
+  routes: [
+    { path: '/', component: HomeView },
+    { path: '/about', component: AboutView },
+    { path: '/users/:username/posts/:postId', component: UserPost },
+    { path: '/user/:afterUser(.*)', component: UserGeneric },
+    { path: '/user/:id', component: DynamicRouteView },
+    {
+      path: '/users/:username',
+      component: User,
+      children: [
+        // UserHome will be rendered inside User's <router-view>
+        // when /users/:username is matched
+        { path: '', name: 'user', component: UserHome },
+
+        // UserProfile will be rendered inside User's <router-view>
+        // when /users/:username/profile is matched
+        { path: 'profile', component: UserProfile }
+      ]
+    },
+    {
+      path: '/demo',
+      component: Demo,
+      children: [
+        { path: '01', component: StartedView },
+        { path: '02', component: DynamicRouteView },
+        { path: '03', component: RoutesMatching },
+        { path: '04', component: NestedRoutes }
+      ]
+    },
+
+    // 將匹配所有內容並將其放在 `$route.params.pathMatch` 下 -> 不是正確的路由都到這邊
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
+
+    // { path: '/:postId', component: RoutesMatch },
+    // { path: '/', component: DynamicRouteView }
+  ]
 })
 export default router

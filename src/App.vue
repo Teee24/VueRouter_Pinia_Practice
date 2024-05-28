@@ -12,17 +12,14 @@ import HelloWorld from './components/HelloWorld.vue'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <router-link to="/demo">練習</router-link>
       </nav>
+      <ul>
+        <li><router-link to="/user/1">User 1 (john)</router-link></li>
+        <li><router-link to="/user/2">User 2 (jane)</router-link></li>
+      </ul>
     </div>
   </header>
-  <ul>
-    <li>
-      <router-link to="/users/eduardo/posts/1">/users/eduardo/posts/1</router-link>
-    </li>
-    <li>
-      <router-link to="/users/tee/posts/23">/users/tee/posts/23</router-link>
-    </li>
-  </ul>
   <main>
     <RouterView />
   </main>
