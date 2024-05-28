@@ -15,6 +15,12 @@
       <li>
         <router-link to="/demo/04">嵌套路由</router-link>
       </li>
+      <li>
+        <router-link to="/demo/05">編程式導航</router-link>
+      </li>
+      <li>
+        <router-link to="/demo/06">命名視圖</router-link>
+      </li>
     </ul>
     <router-view></router-view>
   </div>

@@ -19,6 +19,15 @@ import NestedRoutes from '@/views/04_NestedRoutes.vue'
 import UserProfile from '@/views/UserProfile.vue'
 import User from '@/views/User.vue'
 import UserHome from '@/views/UserHome.vue'
+import ProgrammaticNavigation from '@/views/05_ProgrammaticNavigation.vue'
+import First from '@/views/First.vue'
+import Second from '@/views/Second.vue'
+import Third from '@/views/Third.vue'
+import NamedViews from '@/views/06_NamedViews.vue'
+import UserSetting from '@/views/UserSetting.vue'
+import UserEmailsSubscriptions from '@/views/UserEmailsSubscriptions.vue'
+import UserProfiles from '@/views/UserProfiles.vue'
+import UserProfilePreview from '@/views/UserProfilePreview.vue'
 
 // const router = createRouter({
 //   history: createWebHistory(import.meta.env.BASE_URL),
@@ -85,7 +94,50 @@ const router = createRouter({
         { path: '01', component: StartedView },
         { path: '02', component: DynamicRouteView },
         { path: '03', component: RoutesMatching },
-        { path: '04', component: NestedRoutes }
+        { path: '04', component: NestedRoutes },
+        { path: '05', component: ProgrammaticNavigation },
+        {
+          path: '06',
+          component: NamedViews,
+          children: [
+            {
+              path: 'nameviews01',
+              // a single route can define multiple named components
+              // which will be rendered into <router-view>s with corresponding names.
+              components: {
+                default: First,
+                a: Second,
+                b: Third
+              }
+            },
+            {
+              path: 'nameviewsother',
+              components: {
+                default: Third,
+                a: Second,
+                b: First
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      path: '/settings',
+      // You could also have named views at tho top
+      component: UserSetting,
+      children: [
+        {
+          path: 'emails',
+          component: UserEmailsSubscriptions
+        },
+        {
+          path: 'profile',
+          components: {
+            default: UserProfiles,
+            helper: UserProfilePreview
+          }
+        }
       ]
     },
 
