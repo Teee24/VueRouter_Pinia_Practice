@@ -29,25 +29,6 @@ import UserEmailsSubscriptions from '@/views/UserEmailsSubscriptions.vue'
 import UserProfiles from '@/views/UserProfiles.vue'
 import UserProfilePreview from '@/views/UserProfilePreview.vue'
 
-// const router = createRouter({
-//   history: createWebHistory(import.meta.env.BASE_URL),
-//   routes: [
-//     {
-//       path: '/',
-//       name: 'home',
-//       component: HomeView
-//     },
-//     {
-//       path: '/about',
-//       name: 'about',
-//       // route level code-splitting
-//       // this generates a separate chunk (About.[hash].js) for this route
-//       // which is lazy-loaded when the route is visited.
-//       component: () => import('../views/AboutView.vue')
-//     }
-//   ]
-// })
-
 // 不同的歷史模式
 // hash 模式->createWebHashHistory()
 // Memory 模式->createMemoryHistory()
@@ -55,11 +36,7 @@ import UserProfilePreview from '@/views/UserProfilePreview.vue'
 
 // 定義路由，把URL 路徑對應到元件
 // 路由配置中每個路由對應的元件會被渲染到 <RouterView> 中，這樣就實現了根據URL路徑動態渲染不同的頁面內容
-// 擷取取所有路由或404 Not found 路由
-// 将匹配所有内容并將其放在 `$route.params.pathMatch` 下
-// { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
-// 将匹配以 `/user-` 開頭的所有内容，并將其放在 `$route.params.afterUser` 下
-// { path: '/user-:afterUser(.*)', component: UserGeneric }
+
 // 建立路由器實例 -> 呼叫 createRouter()
 const router = createRouter({
   // 控制了路由和URL 路徑是如何雙向映射
@@ -69,7 +46,7 @@ const router = createRouter({
 
   history: createWebHistory(),
   routes: [
-    { path: '/', component: HomeView },
+    { path: '/', component: HomeView, alias: '/home' },
     { path: '/about', component: AboutView },
     { path: '/users/:username/posts/:postId', component: UserPost },
     { path: '/user/:afterUser(.*)', component: UserGeneric },
@@ -78,12 +55,8 @@ const router = createRouter({
       path: '/users/:username',
       component: User,
       children: [
-        // UserHome will be rendered inside User's <router-view>
-        // when /users/:username is matched
         { path: '', name: 'user', component: UserHome },
 
-        // UserProfile will be rendered inside User's <router-view>
-        // when /users/:username/profile is matched
         { path: 'profile', component: UserProfile }
       ]
     },
@@ -102,8 +75,7 @@ const router = createRouter({
           children: [
             {
               path: 'nameviews01',
-              // a single route can define multiple named components
-              // which will be rendered into <router-view>s with corresponding names.
+
               components: {
                 default: First,
                 a: Second,
@@ -124,7 +96,7 @@ const router = createRouter({
     },
     {
       path: '/settings',
-      // You could also have named views at tho top
+      name: 'set',
       component: UserSetting,
       children: [
         {
@@ -142,10 +114,12 @@ const router = createRouter({
     },
 
     // 將匹配所有內容並將其放在 `$route.params.pathMatch` 下 -> 不是正確的路由都到這邊
-    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
-
-    // { path: '/:postId', component: RoutesMatch },
-    // { path: '/', component: DynamicRouteView }
+    // { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound } ->改成動態導入
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('@/components/NotFound.vue')
+    }
   ]
 })
 export default router

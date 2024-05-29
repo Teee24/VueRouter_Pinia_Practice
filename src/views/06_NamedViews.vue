@@ -16,6 +16,7 @@ import UserSetting from './UserSetting.vue'
   <hr />
   <h1>嵌套命名視圖</h1>
   <div class="set">
+    <router-link :to="{ name: 'set' }">Go to userseting</router-link>
     <UserSetting />
   </div>
 </template>
