@@ -10,5 +10,7 @@
 .set_nav {
   grid-area: nav;
   border: 3px solid lightblue;
+  margin-right: 0.75rem;
+  padding: 0.3rem;
 }
 </style>

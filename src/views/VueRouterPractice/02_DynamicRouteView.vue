@@ -50,8 +50,11 @@ const watchChange = watch(
       複用已經存在的元件實例，使用watch、beforeRouteUpdate 對同一個元件中參數的變化做出回應
     </h3>
     <h4>User Profile (使用watch)</h4>
-    <p>點左邊link觀察變化</p>
-
+    <p>[點下方link觀察變化]</p>
+    <ul>
+      <li><router-link to="/user/1">User 1 (john)</router-link></li>
+      <li><router-link to="/user/2">User 2 (jane)</router-link></li>
+    </ul>
     <p>User ID: {{ userId }}</p>
   </div>
   <h3>擷取所有路由或404 Not found 路由</h3>

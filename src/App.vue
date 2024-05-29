@@ -1,90 +1,76 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import demo from '@/components/Demo.vue'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <p>
-        <strong>($route.fullPath取目前的路由物件)Current route path:</strong> {{ $route.fullPath }}
-      </p>
+  <div class="flexContainer">
+    <header>Layout 嘗試中</header>
+    <div class="flexContent">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <router-link to="/demo">練習</router-link>
+        <demo />
       </nav>
-      <ul>
-        <li><router-link to="/user/1">User 1 (john)</router-link></li>
-        <li><router-link to="/user/2">User 2 (jane)</router-link></li>
-      </ul>
+      <div class="mainAsideContainer">
+        <aside>
+          <p>
+            <strong>目前位置:</strong>
+            {{ $route.fullPath }}
+          </p>
+        </aside>
+        <main>
+          <RouterView />
+        </main>
+      </div>
     </div>
-  </header>
-  <main>
-    <RouterView />
-  </main>
+    <footer>
+      <p>參考: https://router.vuejs.org/zh/</p>
+    </footer>
+  </div>
 </template>
 
 <style scoped>
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  padding: 2px;
+  margin: 2px;
+  border: 2px solid orange;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+main {
+  padding: 2px;
+  margin: 2px;
+  border: 2px solid orange;
+  flex: 1;
 }
-
+.flexContainer {
+  padding: 2px;
+  margin: 2px;
+  border: 2px solid lightblue;
+  display: flex;
+  flex-direction: column;
+}
 nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  padding: 2px;
+  margin: 2px;
+  border: 2px solid lightsalmon;
+  flex: 0 0 auto;
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
+aside {
+  padding: 2px;
+  margin: 2px;
+  border: 2px solid cornflowerblue;
 }
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+footer {
+  padding: 2px;
+  margin: 2px;
+  border: 2px solid lightsalmon;
 }
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.flexContent {
+  display: flex;
+  flex-grow: 1;
+  flex: 1;
 }
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.mainAsideContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 </style>

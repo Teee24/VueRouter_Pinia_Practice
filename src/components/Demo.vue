@@ -1,28 +1,34 @@
 <script setup></script>
 <template>
   <div class="demo">
-    <h2>Demo Content</h2>
     <ul>
-      <li>
-        <router-link to="/demo/01">入門</router-link>
-      </li>
-      <li>
-        <router-link to="/demo/02">動態路由匹配</router-link>
-      </li>
-      <li>
-        <router-link to="/demo/03">路由的匹配語法</router-link>
-      </li>
-      <li>
-        <router-link to="/demo/04">嵌套路由</router-link>
-      </li>
-      <li>
-        <router-link to="/demo/05">編程式導航</router-link>
-      </li>
-      <li>
-        <router-link to="/demo/06">命名視圖</router-link>
-      </li>
+      <li><RouterLink to="/">Home</RouterLink></li>
+      <li><RouterLink to="/about">About</RouterLink></li>
+      <li><RouterLink to="/demo">練習</RouterLink></li>
+      <ul>
+        <li>
+          <RouterLink to="/demo/01">入門</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/demo/02">動態路由匹配</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/demo/03">路由的匹配語法</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/demo/04">嵌套路由</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/demo/05">編程式導航</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/demo/06">命名視圖</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/demo/07/123">組合式API</RouterLink>
+        </li>
+      </ul>
     </ul>
-    <router-view></router-view>
   </div>
 </template>
 <style></style>

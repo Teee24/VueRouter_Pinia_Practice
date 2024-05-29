@@ -5,29 +5,28 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 
 // 路徑參數
-import UserPost from '@/views/UserPost.vue'
-
-import NotFound from '@/components/NotFound.vue'
+import UserPost from '@/views/UserExample/UserPost.vue'
 
 import Demo from '@/components/Demo.vue'
-import StartedView from '@/views/01_StartedView.vue'
-import DynamicRouteView from '@/views/02_DynamicRouteView.vue'
-import RoutesMatching from '@/views/03_RoutesMatching.vue'
+import StartedView from '@/views/VueRouterPractice/01_StartedView.vue'
+import DynamicRouteView from '@/views/VueRouterPractice/02_DynamicRouteView.vue'
+import RoutesMatching from '@/views/VueRouterPractice/03_RoutesMatching.vue'
 import UserGeneric from '@/components/UserGeneric.vue'
-import NestedRoutes from '@/views/04_NestedRoutes.vue'
+import NestedRoutes from '@/views/VueRouterPractice/04_NestedRoutes.vue'
 
-import UserProfile from '@/views/UserProfile.vue'
-import User from '@/views/User.vue'
-import UserHome from '@/views/UserHome.vue'
-import ProgrammaticNavigation from '@/views/05_ProgrammaticNavigation.vue'
-import First from '@/views/First.vue'
-import Second from '@/views/Second.vue'
-import Third from '@/views/Third.vue'
-import NamedViews from '@/views/06_NamedViews.vue'
-import UserSetting from '@/views/UserSetting.vue'
-import UserEmailsSubscriptions from '@/views/UserEmailsSubscriptions.vue'
-import UserProfiles from '@/views/UserProfiles.vue'
-import UserProfilePreview from '@/views/UserProfilePreview.vue'
+import UserProfile from '@/views/UserExample/UserProfile.vue'
+import User from '@/views/UserExample/User.vue'
+import UserHome from '@/views/UserExample/UserHome.vue'
+import ProgrammaticNavigation from '@/views/VueRouterPractice/05_ProgrammaticNavigation.vue'
+import First from '@/views/NamedViewExample/First.vue'
+import Second from '@/views/NamedViewExample/Second.vue'
+import Third from '@/views/NamedViewExample/Third.vue'
+import NamedViews from '@/views/VueRouterPractice/06_NamedViews.vue'
+import UserSetting from '@/views/UsersettingExample/UserSetting.vue'
+import UserEmailsSubscriptions from '@/views/UsersettingExample/UserEmailsSubscriptions.vue'
+import UserProfiles from '@/views/UsersettingExample/UserProfiles.vue'
+import UserProfilePreview from '@/views/UsersettingExample/UserProfilePreview.vue'
+// import CompositionApi from '/src/views/CompositionAPI.vue'
 
 // 不同的歷史模式
 // hash 模式->createWebHashHistory()
@@ -69,13 +68,17 @@ const router = createRouter({
         { path: '03', component: RoutesMatching },
         { path: '04', component: NestedRoutes },
         { path: '05', component: ProgrammaticNavigation },
+        // { path: '07/:id', component: CompositionApi },
+        {
+          path: '07/:id',
+          component: () => import('@/views/VueRouterPractice/CompositionAPI.vue')
+        },
         {
           path: '06',
           component: NamedViews,
           children: [
             {
               path: 'nameviews01',
-
               components: {
                 default: First,
                 a: Second,
