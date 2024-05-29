@@ -7,7 +7,7 @@ import AboutView from '@/views/AboutView.vue'
 // 路徑參數
 import UserPost from '@/views/UserExample/UserPost.vue'
 
-import Demo from '@/components/Demo.vue'
+import Demo from '@/components/DemoDisplay.vue'
 import StartedView from '@/views/VueRouterPractice/01_StartedView.vue'
 import DynamicRouteView from '@/views/VueRouterPractice/02_DynamicRouteView.vue'
 import RoutesMatching from '@/views/VueRouterPractice/03_RoutesMatching.vue'
@@ -68,7 +68,6 @@ const router = createRouter({
         { path: '03', component: RoutesMatching },
         { path: '04', component: NestedRoutes },
         { path: '05', component: ProgrammaticNavigation },
-        // { path: '07/:id', component: CompositionApi },
         {
           path: '07/:id',
           component: () => import('@/views/VueRouterPractice/CompositionAPI.vue')
