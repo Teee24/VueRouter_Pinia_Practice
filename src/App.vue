@@ -36,6 +36,12 @@ import demo from '@/components/DemoDisplay.vue'
             </li>
           </ul>
         </ul>
+        <hr />
+        <ul>
+          <li><RouterLink to="/piniastart">認識Pinia</RouterLink></li>
+          <li><RouterLink to="/01pinia">定義Store</RouterLink></li>
+          <li><RouterLink to="/02pinia">State</RouterLink></li>
+        </ul>
       </nav>
       <div class="mainAsideContainer">
         <aside>

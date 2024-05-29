@@ -114,6 +114,18 @@ const router = createRouter({
         }
       ]
     },
+    {
+      path: '/piniastart',
+      component: () => import('@/views/PiniaNotes/PiniaStarted.vue')
+    },
+    {
+      path: '/01pinia',
+      component: () => import('@/views/PiniaNotes/DefineStore.vue')
+    },
+    {
+      path: '/02pinia',
+      component: () => import('@/views/PiniaNotes/State.vue')
+    },
 
     // 將匹配所有內容並將其放在 `$route.params.pathMatch` 下 -> 不是正確的路由都到這邊
     // { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound } ->改成動態導入
