@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import { useCounterStore } from '@/stores/counter'
+
+const conter = useCounterStore()
+console.log(conter)
+</script>
 <template>
   <h2>Store (Ex: Pinia) 是一個保存狀態和業務邏輯的實體</h2>
   <h3>全域狀態 like JS 的 windows.xxx</h3>

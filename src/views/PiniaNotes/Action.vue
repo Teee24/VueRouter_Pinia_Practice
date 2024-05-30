@@ -1,9 +1,11 @@
 <script setup>
 import { useLoginStore } from '@/stores/login'
-import { useLoggerStore } from '@/stores/loggers'
 
 const loginstore = useLoginStore()
-const loggerStore = useLoggerStore()
+
+// const recordLogin = ref('')
+
+// localStorage.setItem('login', JSON.stringify(loginstore))
 // console.log(loggerStore.subscribeToLoginActions)
 </script>
 <template>

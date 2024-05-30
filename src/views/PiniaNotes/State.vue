@@ -1,7 +1,9 @@
 <script setup>
 import { useTodoStore } from '@/stores/todo'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { createPinia } from 'pinia'
+
 const todostore = useTodoStore()
 
 // 把 todo ref 解構為普通對象
@@ -34,6 +36,10 @@ const addTodo = () => {
 // 訂閱 state
 // const unsubscribe = todostore.$subscribe((mutation, state) => {
 //   console.log('State changed:', state)
+// })
+// todostore.subscribe((mutation, state) => {
+//   console.log('mutation', mutation)
+//   console.log('state', state)
 // })
 </script>
 <template>
@@ -138,5 +144,8 @@ const addTodo = () => {
   <p>
     但是有時候，你可能希望即使在組件被卸載後，這個訂閱依然存在，以便在其他地方持續監聽狀態的變化。
   </p>
+  <p>pinia的$subscribe與watch</p>
+  <p>1.$subscribe是pinia的方法可以用來監控pinia目前的狀態與所傳送的內容。</p>
+  <p>2.watch則是vue所提供監控變數改變時可以執行函式或是通知的方法。</p>
 </template>
 <style></style>
