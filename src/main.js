@@ -6,9 +6,10 @@ import App from './App.vue'
 import router from './router'
 
 import { createPinia } from 'pinia' // 建立一個pinia 實例(根store) 並將其傳遞給應用程式
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate' // Pinia插件
 
 const pinia = createPinia()
-
+pinia.use(piniaPluginPersistedstate)
 // 註冊路由器插件
 const app = createApp(App)
 

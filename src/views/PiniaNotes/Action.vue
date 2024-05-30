@@ -1,7 +1,10 @@
 <script setup>
 import { useLoginStore } from '@/stores/login'
+import { useLoggerStore } from '@/stores/loggers'
 
 const loginstore = useLoginStore()
+const loggerStore = useLoggerStore()
+// console.log(loggerStore.subscribeToLoginActions)
 </script>
 <template>
   <h1>Action</h1>
