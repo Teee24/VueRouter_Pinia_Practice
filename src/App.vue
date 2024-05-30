@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import demo from '@/components/DemoDisplay.vue'
+import demo from '@/views/DemoDisplay.vue'
 </script>
 
 <template>
@@ -41,6 +41,8 @@ import demo from '@/components/DemoDisplay.vue'
           <li><RouterLink to="/piniastart">認識Pinia</RouterLink></li>
           <li><RouterLink to="/01pinia">定義Store</RouterLink></li>
           <li><RouterLink to="/02pinia">State</RouterLink></li>
+          <li><RouterLink to="/03pinia">Getter</RouterLink></li>
+          <li><RouterLink to="/04pinia">Action</RouterLink></li>
         </ul>
       </nav>
       <div class="mainAsideContainer">
@@ -73,7 +75,7 @@ main {
 }
 .flexContainer {
   width: 800px;
-  height: 820px;
+
   padding: 2px;
   margin: 2px;
   border: 2px solid cornflowerblue;

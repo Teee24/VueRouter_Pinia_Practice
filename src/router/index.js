@@ -7,7 +7,7 @@ import AboutView from '@/views/AboutView.vue'
 // 路徑參數
 import UserPost from '@/views/UserExample/UserPost.vue'
 
-import Demo from '@/components/DemoDisplay.vue'
+import Demo from '@/views/DemoDisplay.vue'
 import StartedView from '@/views/VueRouterPractice/01_StartedView.vue'
 import DynamicRouteView from '@/views/VueRouterPractice/02_DynamicRouteView.vue'
 import RoutesMatching from '@/views/VueRouterPractice/03_RoutesMatching.vue'
@@ -125,6 +125,14 @@ const router = createRouter({
     {
       path: '/02pinia',
       component: () => import('@/views/PiniaNotes/State.vue')
+    },
+    {
+      path: '/03pinia',
+      component: () => import('@/views/PiniaNotes/Getter.vue')
+    },
+    {
+      path: '/04pinia',
+      component: () => import('@/views/PiniaNotes/Action.vue')
     },
 
     // 將匹配所有內容並將其放在 `$route.params.pathMatch` 下 -> 不是正確的路由都到這邊

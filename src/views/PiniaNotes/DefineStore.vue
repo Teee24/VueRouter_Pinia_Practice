@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { defineStore } from 'pinia'
-import { useRoute } from 'vue-router'
+
 import { useShoppingCartStore } from '@/stores/shoppinpCart'
 import { storeToRefs } from 'pinia'
 
@@ -76,7 +75,7 @@ const product = ref('')
   <div>
     <label>以購物車舉例</label>
     <p>目前購物車商品數量: {{ cartItems }}</p>
-    <input type="text" :value="product" />
+    <input type="text" v-model="product" />
     <button @click="addToCart(product)">加到購物車</button>
   </div>
 </template>

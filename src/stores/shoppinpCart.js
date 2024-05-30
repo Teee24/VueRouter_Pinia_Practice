@@ -5,7 +5,7 @@ import { defineStore } from 'pinia'
     （例如 useUserStore，useCartStore，useProductStore）
     第一個參數是你應用程式中 Store 的唯一識別符。
 */
-
+// Setup Stores
 // 定義購物車存儲區
 export const useShoppingCartStore = defineStore('shoppingCart', () => {
   // 使用 setup 函數初始化存儲區
