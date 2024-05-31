@@ -2,7 +2,6 @@
 import { useTodoStore } from '@/stores/todo'
 import { storeToRefs } from 'pinia'
 import { ref, onMounted } from 'vue'
-import { createPinia } from 'pinia'
 
 const todostore = useTodoStore()
 
@@ -29,6 +28,9 @@ const addTodo = () => {
   todos.value.push(newTodo)
 }
 
+const plusone = () => {
+  todostore.numberOftodo++
+}
 // 替換 state
 // 注意：Pinia 不直接支援替換整個狀態對象，但你可以透過重置整個 store 來實現
 // 例如：store.$reset() 或 store.state = initialState
@@ -87,7 +89,8 @@ const addTodo = () => {
   <h2>Modifiable state</h2>
   <p>修改單一 state：直接修改</p>
   <p>-> counterStore.count++;</p>
-  <p style="background-color: cornsilk">結果: {{ todostore.numberOftodo++ }}</p>
+  <button @click="plusone">加一</button>
+  <p style="background-color: cornsilk">結果: {{ todostore.numberOftodo }}</p>
 
   <h2>Mutating the state</h2>
   <p>一次修改單個或多個 state：storeInstance.$patch()，根據傳進去的參數不同，分成兩個寫法</p>
